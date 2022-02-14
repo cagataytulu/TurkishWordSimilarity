@@ -43,13 +43,13 @@ def getUniqueWordList(dataSet):
 
 
 
-df_turksim = pd.read_csv('../data/turkishsim.txt', delimiter = ",",encoding="utf-8")
+df_turksim = pd.read_csv('data/turkishsim.txt', delimiter = ",",encoding="utf-8")
 df_turksim["sim"]=df_turksim["sim"]/10
 wList=getUniqueWordList(df_turksim)
 print(f"Unique Word Count in SimTurk Dataset:{len(wList)}")
 print(f"Unique Words in SimTurk Dataset:{wList}")
 
-df_rg65 = pd.read_csv('../data/rg65_eng_trk.txt', delimiter = ",",encoding="utf-8")
+df_rg65 = pd.read_csv('data/rg65_eng_trk.txt', delimiter = ",",encoding="utf-8")
 df_rg65["simEng"]=df_rg65["simEng"]/4
 df_rg65["sim"]=df_rg65["sim"]/4
 wList=getUniqueWordList(df_rg65)
@@ -58,55 +58,55 @@ print(f"Unique Words in RG65_Turkce Dataset:{wList}")
 
 exit()
 
-w2vModel= KeyedVectors.load_word2vec_format('../../depo/trmodelwv', binary=True)
+w2vModel= KeyedVectors.load_word2vec_format('models/trmodelwv', binary=True)
 resultSet=runModel(w2vModel,df_turksim)
-resultSet["resultDataFrame"].to_csv('../data/result_SimTurk_w2v.csv',encoding='utf-8')
+resultSet["resultDataFrame"].to_csv('data/result_SimTurk_w2v.csv',encoding='utf-8')
 print(f"Spearman Rank Correlation Value of SimTurk Dataset For Word2Vec Model:{resultSet['correlation']}")
 print(f"OOV Pairs count for SimTurk Dataset:{resultSet['oovPairCount']}")
 print(f"OOV Count:{len(resultSet['oovList'])} and OOV List for SimTurk Dataset:{resultSet['oovList']}")
-print(f"Similarity result for SimTurk dataset for Word2Vec Model is Saved into ../data/result_SimTurk_w2v.csv")
+print(f"Similarity result for SimTurk dataset for Word2Vec Model is Saved into data/result_SimTurk_w2v.csv")
 print("==========================")
 
 resultSet=runModel(w2vModel,df_rg65)
-resultSet["resultDataFrame"].to_csv('../data/result_Rg65_w2v.csv',encoding='utf-8')
+resultSet["resultDataFrame"].to_csv('data/result_Rg65_w2v.csv',encoding='utf-8')
 print(f"Spearman Rank Correlation Value of RG65_Turkce Dataset For Word2Vec Model:{resultSet['correlation']}")
 print(f"OOV Pairs count for RG65 Dataset:{resultSet['oovPairCount']}")
 print(f"OOV Count:{len(resultSet['oovList'])} and OOV List for RG65 Dataset:{resultSet['oovList']}")
-print(f"Similarity result for RG65 dataset for Word2Vec Model is Saved into ../data/result_Rg65_w2v.csv\n\n")
+print(f"Similarity result for RG65 dataset for Word2Vec Model is Saved into data/result_Rg65_w2v.csv\n\n")
 
 #It might take 5-10 min to load fasttext model
-fastTextModel=load_facebook_model('../../depo/cc.tr.300.bin.gz').wv
+fastTextModel=load_facebook_model('models/cc.tr.300.bin.gz').wv
 resultSet=runModel(fastTextModel,df_turksim)
-resultSet["resultDataFrame"].to_csv('../data/result_SimTurk_fasttext.csv',encoding='utf-8')
+resultSet["resultDataFrame"].to_csv('data/result_SimTurk_fasttext.csv',encoding='utf-8')
 print(f"Spearman Rank Correlation Value of SimTurk Dataset For FastText Model:{resultSet['correlation']}")
 print(f"OOV Pairs count for SimTurk Dataset:{resultSet['oovPairCount']}")
 print(f"OOV Count:{len(resultSet['oovList'])} and OOV List for SimTurk Dataset:{resultSet['oovList']}")
-print(f"Similarity result for SimTurk dataset for FastText Model is Saved into ../data/result_SimTurk_fasttext.csv")
+print(f"Similarity result for SimTurk dataset for FastText Model is Saved into data/result_SimTurk_fasttext.csv")
 print("==========================")
 
 resultSet=runModel(fastTextModel,df_rg65)
-resultSet["resultDataFrame"].to_csv('../data/result_Rg65_Fasttext.csv',encoding='utf-8')
+resultSet["resultDataFrame"].to_csv('data/result_Rg65_Fasttext.csv',encoding='utf-8')
 print(f"Spearman Rank Correlation Value of RG65_Turkce Dataset For FastText Model:{resultSet['correlation']}")
 print(f"OOV Pairs count for RG65 Dataset:{resultSet['oovPairCount']}")
 print(f"OOV Count:{len(resultSet['oovList'])} and OOV List for RG65 Dataset:{resultSet['oovList']}")
-print(f"Similarity result for RG65 dataset for FastText Model is Saved into ../data/result_Rg65_fasttext.csv\n\n")
+print(f"Similarity result for RG65 dataset for FastText Model is Saved into data/result_Rg65_fasttext.csv\n\n")
 
-glove_file = '../data/vectorsglovetr.txt'
-glove_vec_file = '../data/glove_vec_file.txt'
+glove_file = 'models/vectorsglovetr.txt'
+glove_vec_file = 'models/glove_vec_file.txt'
 glove2word2vec(glove_file, glove_vec_file)
 gloveModel = KeyedVectors.load_word2vec_format(glove_vec_file)
 resultSet=runModel(gloveModel,df_turksim)
-resultSet["resultDataFrame"].to_csv('../data/result_SimTurk_Glove.csv',encoding='utf-8')
+resultSet["resultDataFrame"].to_csv('data/result_SimTurk_Glove.csv',encoding='utf-8')
 print(f"Spearman Rank Correlation Value of SimTurk Dataset For Glove Model:{resultSet['correlation']}")
 print(f"OOV Pairs count for SimTurk Dataset:{resultSet['oovPairCount']}")
 print(f"OOV Count:{len(resultSet['oovList'])} and OOV List for SimTurk Dataset:{resultSet['oovList']}")
-print(f"Similarity result for SimTurk dataset for Glove Model is Saved into ../data/result_SimTurk_glove.csv")
+print(f"Similarity result for SimTurk dataset for Glove Model is Saved into data/result_SimTurk_glove.csv")
 print("==========================")
 
 resultSet=runModel(gloveModel,df_rg65)
-resultSet["resultDataFrame"].to_csv('../data/result_Rg65_Glove.csv',encoding='utf-8')
+resultSet["resultDataFrame"].to_csv('data/result_Rg65_Glove.csv',encoding='utf-8')
 print(f"Spearman Rank Correlation Value of RG65_Turkce Dataset For Glove Model:{resultSet['correlation']}")
 print(f"OOV Pairs count for RG65 Dataset:{resultSet['oovPairCount']}")
 print(f"OOV Count:{len(resultSet['oovList'])} and OOV List for RG65 Dataset:{resultSet['oovList']}")
-print(f"Similarity result for RG65 dataset for Glove Model is Saved into ../data/result_Rg65_glove.csv")
+print(f"Similarity result for RG65 dataset for Glove Model is Saved into data/result_Rg65_glove.csv")
 
