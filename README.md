@@ -1,5 +1,5 @@
 # TurkishWordSimilarity
-This project is intented to share the codes and results of Turkish Word Similarity Tests conducted Turkish embeding vectors.
+This project is intented to share the codes and results of Turkish Word Similarity Tests conducted using Turkish embeding vectors creatred with Word2Vec, Glove and FastText methods.
 
 #requirements
 gensim librarry and 
