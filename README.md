@@ -6,10 +6,11 @@ gensim librarry and
 model files of Turkish Word2Vec, Glove and FastText word embeddings
 
 To get the Word2Vec Turkish model file, please refer to the https://github.com/akoksal/Turkish-Word2Vec
-To get the Glove Turkish model files please refer to the https://github.com/inzva/Turkish-GloVe ## Please download vectors.bin.gz vectors.txt.gz files and unzip them
+To get the Glove Turkish model files please refer to the https://github.com/inzva/Turkish-GloVe ## Please download vectors.bin.gz vectors.txt.gz files and then unzip them
 To get the model file of FastText Turkish https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.tr.300.bin.gz
 
-After you have donwloaded the model files, please put them into the models directory
+First clone the codes into your local disk, 
+Download the model files as explained above, please put them into the models directory
 
 then run the embedingcompare.py python file like;
 python embedingcompare.py
