@@ -2,9 +2,7 @@
 This project is intented to share the codes and results of Turkish Word Similarity Tests conducted using pre-trained Turkish embeding vectors created with Word2Vec, Glove and FastText methods.
 
 #requirements
-
-gensim librarry and 
-
+gensim librarry  
 model files of Turkish Word2Vec, Glove and FastText word embeddings
 
 To get the pre-trained Word2Vec Turkish model file, please refer to the https://github.com/akoksal/Turkish-Word2Vec
