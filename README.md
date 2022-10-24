@@ -21,7 +21,7 @@ python embedingcompare.py
 
 you will get the results of the similarity tests of SimTurk and RG65_Turkce datasets for each model under the results directory.
 
-If you have utilized fr0m my work please cite it as;
+If you have utilized from my work please cite it as;
 
 Tulu, C. N. (2022). Experimental Comparison of Pre-Trained Word Embedding Vectors of Word2Vec, Glove, FastText for Word Level Semantic Text Similarity Measurement in Turkish. Advances in Science and Technology Research Journal, 16(4), 147-156. https://doi.org/10.12913/22998624/152453
 
